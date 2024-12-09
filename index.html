@@ -28,33 +28,39 @@
             text-align: center;
         }
 
-        /* Background Images */
-        .background-desktop, .background-mobile {
+        /* Default Background */
+        .background-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: -1;
-            display: none; /* Hidden by default */
         }
 
-        /* Show desktop background by default */
-        .background-desktop {
-            display: block;
+        /* Desktop Background */
+        .background-container.desktop {
+            background-image: url('newlscrop.gif');
         }
 
-        /* Mobile-specific styles */
+        /* Mobile-specific Background */
         @media (max-width: 768px) {
-            .background-desktop {
-                display: none;
+            .background-container.desktop {
+                display: none; /* Hide desktop background */
             }
 
-            .background-mobile {
+            .background-container.mobile {
                 display: block;
-                transform: scale(0.7); /* Zoom out by scaling down */
+                background-image: url('mememas.gif');
+                background-size: 80%; /* Zoom out by scaling image down */
             }
+        }
+
+        .background-container.mobile {
+            display: none; /* Hide mobile background by default */
         }
 
         /* Buttons */
@@ -99,15 +105,13 @@
     </style>
 </head>
 <body>
-    <!-- Desktop Background -->
-    <img src="newlscrop.gif" alt="Desktop Meme Coin" class="background-desktop">
-
-    <!-- Mobile Background -->
-    <img src="mememas.gif" alt="Mobile Meme Coin" class="background-mobile">
+    <!-- Background Containers -->
+    <div class="background-container desktop"></div>
+    <div class="background-container mobile"></div>
 
     <!-- Wrapper -->
     <div class="wrapper">
-        <h1 style="color: white; font-size: 3rem; z-index: 2;">Welcome to a REAL CTO!</h1>
+        <h1 style="color: white; font-size: 3rem; z-index: 2;">Welcome to the REAL CTO!</h1>
         <div class="button-container">
             <a href="https://t.me/YOUR_TELEGRAM_GROUP" target="_blank">Telegram</a>
             <a href="https://YOUR_DEX_SCANNER_LINK" target="_blank">DEX Scanner</a>
